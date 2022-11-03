@@ -6,6 +6,7 @@ class Point2D:
     def __init__(self, x: float, y: float) -> None:
         self._coordinates = Vector([x, y])
 
+
     @property
     def x(self) -> float:
         return self._coordinates[0]
@@ -13,6 +14,11 @@ class Point2D:
     @property
     def y(self) -> float:
         return self._coordinates[1]
+
+    def __isub__(self, other):
+        self.x -= other.x
+        self.y -= other.y
+        return self
 
 
 def test_point_construction() -> None:
