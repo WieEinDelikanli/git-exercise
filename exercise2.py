@@ -13,6 +13,11 @@ class Point2D:
     @property
     def y(self) -> float:
         return self._coordinates[1]
+    
+    def __iadd__(self, other):
+        self.x += other.x
+        self.y += other.y
+        return self
 
 
 def test_point_construction() -> None:
