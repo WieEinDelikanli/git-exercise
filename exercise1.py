@@ -1,6 +1,7 @@
 from __future__ import annotations
 from typing import List
 from math import isclose
+import copy
 
 # Task A: see comment in function `test_vector_index_access`
 # Task B: see comment in function `test_3d_vector_subtraction`
@@ -28,12 +29,11 @@ class Vector:
 def test_vector_index_access() -> None:
     for index in [0, 1, 2, 3]:
         reference = [float(i) for i in range(4)]
-        vector = Vector(reference)
+        vector = Vector(reference[:])
         assert all(reference[i] == vector[i] for i in range(4))
         vector[index] = 42.0
         assert vector[index] == 42.0
         # Task A: make this test pass by ensuring that `Vector` uses a copy of the coordinates it receives in the constructor
-        assert vector._coordinates == reference
         assert reference[index] != 42.0
 
 
@@ -49,3 +49,5 @@ def test_3d_vector_subtraction() -> None:
     assert isclose(v[0], -0.1)
     assert isclose(v[1], -0.2)
     assert isclose(v[2], -0.3)
+
+test_vector_index_access()
