@@ -14,14 +14,24 @@ class Point2D:
     def y(self) -> float:
         return self._coordinates[1]
     
+    # Instance oldugu icin _coordinates, self._x degil bir alttaki vector
+    # class'ina gore hareket etmelisin.
+    @x.setter
+    def x(self, value):
+        self._coordinates[0] = value
+        
+    @y.setter
+    def y(self, value):
+        self._coordinates[1] = value
+    
     def __iadd__(self, other):
-        self.x += other.x
-        self.y += other.y
+        self._coordinates[0] += other[0]
+        self._coordinates[1] += other[1]
         return self
     
     def __isub__(self, other):
-        self.x -= other.x
-        self.y -= other.y
+        self._coordinates[0] -= other[0]
+        self._coordinates[1] -= other[1]
         return self
 
 
